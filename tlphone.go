@@ -82,7 +82,7 @@ func New() *tlphone {
 	var (
 		glyphs []string
 		mods   []string
-		kn     = &tlphone{}
+		tl     = &tlphone{}
 	)
 
 	// modifiers.
@@ -94,23 +94,23 @@ func New() *tlphone {
 	for k := range compounds {
 		glyphs = append(glyphs, k)
 	}
-	kn.modCompounds, _ = regexp.Compile(`((` + strings.Join(glyphs, "|") + `)(` + strings.Join(mods, "|") + `))`)
+	tl.modCompounds, _ = regexp.Compile(`((` + strings.Join(glyphs, "|") + `)(` + strings.Join(mods, "|") + `))`)
 
 	// consonants.
 	glyphs = []string{}
 	for k := range consonants {
 		glyphs = append(glyphs, k)
 	}
-	kn.modConsonants, _ = regexp.Compile(`((` + strings.Join(glyphs, "|") + `)(` + strings.Join(mods, "|") + `))`)
+	tl.modConsonants, _ = regexp.Compile(`((` + strings.Join(glyphs, "|") + `)(` + strings.Join(mods, "|") + `))`)
 
 	// vowels.
 	glyphs = []string{}
 	for k := range vowels {
 		glyphs = append(glyphs, k)
 	}
-	kn.modVowels, _ = regexp.Compile(`((` + strings.Join(glyphs, "|") + `)(` + strings.Join(mods, "|") + `))`)
+	tl.modVowels, _ = regexp.Compile(`((` + strings.Join(glyphs, "|") + `)(` + strings.Join(mods, "|") + `))`)
 
-	return kn
+	return tl
 }
 
 // Encode encodes a unicode Kannada string to its Roman tlPhone hash.
